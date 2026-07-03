@@ -1,59 +1,28 @@
-import { headers as getHeaders } from 'next/headers.js'
-import Image from 'next/image'
-import { getPayload } from 'payload'
-import React from 'react'
-import { fileURLToPath } from 'url'
-
-import config from '@/payload.config'
-import './styles.css'
+import { BlogContainer } from '@/components/blog/BlogContainer'
+import { PostListItem } from '@/components/blog/PostListItem'
+import { siteConfig } from '@/config/site'
+import { getPublishedPosts } from '@/lib/posts'
 
 export default async function HomePage() {
-  const headers = await getHeaders()
-  const payloadConfig = await config
-  const payload = await getPayload({ config: payloadConfig })
-  const { user } = await payload.auth({ headers })
-
-  const fileURL = `vscode://file/${fileURLToPath(import.meta.url)}`
+  const { docs: posts } = await getPublishedPosts()
 
   return (
-    <div className="home">
-      <div className="content">
-        <picture>
-          <source srcSet="https://raw.githubusercontent.com/payloadcms/payload/3.x/packages/ui/src/assets/payload-favicon.svg" />
-          <Image
-            alt="Payload Logo"
-            height={65}
-            src="https://raw.githubusercontent.com/payloadcms/payload/3.x/packages/ui/src/assets/payload-favicon.svg"
-            width={65}
-          />
-        </picture>
-        {!user && <h1>Welcome to your new project.</h1>}
-        {user && <h1>Welcome back, {user.email}</h1>}
-        <div className="links">
-          <a
-            className="admin"
-            href={payloadConfig.routes.admin}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            Go to admin panel
-          </a>
-          <a
-            className="docs"
-            href="https://payloadcms.com/docs"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            Documentation
-          </a>
-        </div>
+    <BlogContainer className="py-10">
+      <div className="relative z-[1] my-6 w-full">
+        <h1 className="text-3xl font-semibold leading-10 tracking-tighter text-foreground">
+          {siteConfig.tagline}
+        </h1>
+
+        {posts.length === 0 ? (
+          <p className="mt-12 text-sm text-muted-foreground">هنوز مطلبی منتشر نشده. از پنل مدیریت یک مطلب بسازید.</p>
+        ) : (
+          <div className="mt-12 grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-4">
+            {posts.map((post) => (
+              <PostListItem key={post.id} post={post} />
+            ))}
+          </div>
+        )}
       </div>
-      <div className="footer">
-        <p>Update this page by editing</p>
-        <a className="codeLink" href={fileURL}>
-          <code>app/(frontend)/page.tsx</code>
-        </a>
-      </div>
-    </div>
+    </BlogContainer>
   )
 }
