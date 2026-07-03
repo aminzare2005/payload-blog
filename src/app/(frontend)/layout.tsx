@@ -1,18 +1,31 @@
 import React from 'react'
-import './styles.css'
+
+import { SiteFooter } from '@/components/blog/SiteFooter'
+import { SiteHeader } from '@/components/blog/SiteHeader'
+import { siteConfig } from '@/config/site'
+
+import '../globals.css'
+import { myFont } from '@/lib/fonts'
 
 export const metadata = {
-  description: 'A blank template using Payload in a Next.js app.',
-  title: 'Payload Blank Template',
+  description: siteConfig.description,
+  title: {
+    default: siteConfig.name,
+    template: `%s | ${siteConfig.name}`,
+  },
 }
 
 export default async function RootLayout(props: { children: React.ReactNode }) {
   const { children } = props
 
   return (
-    <html lang="en">
+    <html className={`${myFont.className} ${myFont.variable}`} dir="rtl" lang="fa" suppressHydrationWarning>
       <body>
-        <main>{children}</main>
+        <div className="flex min-h-screen flex-col">
+          <SiteHeader />
+          <main className="flex-1">{children}</main>
+          <SiteFooter />
+        </div>
       </body>
     </html>
   )
