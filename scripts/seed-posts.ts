@@ -11,7 +11,7 @@ import { paragraphsToLexical } from '../src/lib/lexical.ts'
 const ZOOMIT_FEED_URL = 'https://www.zoomit.ir/feed/'
 const POST_COUNT = 10
 const FETCH_HEADERS = {
-  'User-Agent': 'Mozilla/5.0 (compatible; landing-base-seed/1.0)',
+  'User-Agent': 'Mozilla/5.0 (compatible; payload-blog-seed/1.0)',
   Accept: 'text/html,application/xml,image/*;q=0.9,*/*;q=0.8',
   Referer: 'https://www.zoomit.ir/',
 }
