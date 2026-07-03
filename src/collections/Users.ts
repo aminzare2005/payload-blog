@@ -7,12 +7,20 @@ export const Users: CollectionConfig = {
     singular: 'کاربر',
   },
   admin: {
-    useAsTitle: 'email',
-    group: 'مجموعه‌ها',
+    useAsTitle: 'name',
+    group: 'مدیریت',
+    description: 'کاربرانی که ثبتنام کردن',
+    listSearchableFields: ['name', 'email'],
   },
   auth: true,
   fields: [
     // Email added by default
     // Add more fields as needed
+    {
+      name: 'name',
+      type: 'text',
+      label: 'نام',
+      required: true,
+    },
   ],
 }

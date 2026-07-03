@@ -33,16 +33,6 @@ export default buildConfig({
     },
   },
   collections: [Users, Media, Posts],
-  localization: {
-    defaultLocale: 'fa',
-    locales: [
-      {
-        code: 'fa',
-        label: 'فارسی',
-        rtl: true,
-      },
-    ],
-  },
   editor: lexicalEditor({
     admin: {
       placeholder: 'متن مطلب را اینجا بنویسید…',

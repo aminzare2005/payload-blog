@@ -88,10 +88,10 @@ export interface Config {
   db: {
     defaultIDType: string;
   };
-  fallbackLocale: ('false' | 'none' | 'null') | false | null | 'fa' | 'fa'[];
+  fallbackLocale: null;
   globals: {};
   globalsSelect: {};
-  locale: 'fa';
+  locale: null;
   widgets: {
     collections: CollectionsWidget;
   };
@@ -120,11 +120,14 @@ export interface UserAuthOperations {
   };
 }
 /**
+ * کاربرانی که ثبتنام کردن
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
  */
 export interface User {
   id: string;
+  name: string;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -145,6 +148,8 @@ export interface User {
   collection: 'users';
 }
 /**
+ * رسانه‌هایی که برای مطالب استفاده می‌شوند
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "media".
  */
@@ -284,6 +289,7 @@ export interface PayloadMigration {
  * via the `definition` "users_select".
  */
 export interface UsersSelect<T extends boolean = true> {
+  name?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;

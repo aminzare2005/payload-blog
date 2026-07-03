@@ -60,10 +60,12 @@ export const Posts: CollectionConfig = {
       name: 'coverImage',
       type: 'upload',
       relationTo: 'media',
+      label: 'تصویر کاور',
     },
     {
       name: 'publishedAt',
       type: 'date',
+      label: 'تاریخ انتشار',
       admin: {
         date: {
           pickerAppearance: 'dayAndTime',

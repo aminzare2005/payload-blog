@@ -7,7 +7,9 @@ export const Media: CollectionConfig = {
     singular: 'رسانه',
   },
   admin: {
-    group: 'مجموعه‌ها',
+    group: 'محتوا',
+    description: 'رسانه‌هایی که برای مطالب استفاده می‌شوند',
+    listSearchableFields: ['alt'],
   },
   access: {
     read: () => true,
