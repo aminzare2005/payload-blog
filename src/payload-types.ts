@@ -205,6 +205,7 @@ export interface Post {
   publishedAt?: string | null;
   updatedAt: string;
   createdAt: string;
+  deletedAt?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -339,6 +340,7 @@ export interface PostsSelect<T extends boolean = true> {
   publishedAt?: T;
   updatedAt?: T;
   createdAt?: T;
+  deletedAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

@@ -23,6 +23,7 @@ export const Posts: CollectionConfig = {
     delete: ({ req }) => Boolean(req.user),
   },
   defaultSort: '-publishedAt',
+  trash: true,
   hooks: {
     afterChange: [revalidatePost],
     afterDelete: [revalidateDelete],
