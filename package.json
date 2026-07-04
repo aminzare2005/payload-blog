@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",
-    "@payloadcms/db-mongodb": "3.85.2",
+    "@payloadcms/db-vercel-postgres": "^3.85.2",
     "@payloadcms/next": "3.85.2",
     "@payloadcms/richtext-lexical": "3.85.2",
     "@payloadcms/ui": "3.85.2",
