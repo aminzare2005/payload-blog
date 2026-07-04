@@ -9,7 +9,7 @@ type PostHeroProps = {
 }
 
 function getCoverImage(post: Post): Media | null {
-  if (!post.coverImage || typeof post.coverImage === 'string') {
+  if (!post.coverImage || typeof post.coverImage !== 'object') {
     return null
   }
 
