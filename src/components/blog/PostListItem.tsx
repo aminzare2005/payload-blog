@@ -22,6 +22,7 @@ export function PostListItem({ post }: PostListItemProps) {
   return (
     <Link
       className="post-card group block p-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d97706]"
+      draggable={false}
       href={`/${post.slug}`}
     >
       {cover?.url && (
@@ -30,6 +31,7 @@ export function PostListItem({ post }: PostListItemProps) {
             alt={cover.alt}
             className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
             fill
+            draggable={false}
             sizes="(max-width: 768px) 100vw, 400px"
             src={cover.url}
           />
@@ -38,17 +40,20 @@ export function PostListItem({ post }: PostListItemProps) {
 
       <div className="flex flex-1 flex-col py-3">
         {post.publishedAt && (
-          <time className="mb-3 block text-sm leading-5 text-muted-foreground" dateTime={post.publishedAt}>
+          <time
+            className="mb-3 block text-sm leading-5 text-muted-foreground"
+            dateTime={post.publishedAt}
+          >
             {formatBlogDate(post.publishedAt)}
           </time>
         )}
 
-        <h2 className="mb-3 text-xl font-semibold leading-7 tracking-tight text-foreground transition-colors group-hover:text-[#b45309]">
+        <h2 className="text-xl mb-3 font-semibold leading-7 tracking-tight text-foreground transition-colors group-hover:text-[#b45309]">
           {post.title}
         </h2>
 
         {post.excerpt && (
-          <div className="blog-prose text-[15px] leading-6 [&_p]:mb-0 [&_p]:max-w-[360px] [&_p]:text-muted-foreground">
+          <div className="blog-prose text-[15px] leading-6 [&_p]:mb-0 [&_p]:mt-0 [&_p]:max-w-[360px] [&_p]:text-muted-foreground">
             <p>{post.excerpt}</p>
           </div>
         )}
