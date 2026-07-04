@@ -14,7 +14,7 @@ import { siteConfig } from './config/site'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
-export default buildConfig({
+const config = buildConfig({
   admin: {
     user: Users.slug,
     theme: 'light',
@@ -53,4 +53,22 @@ export default buildConfig({
   }),
   sharp,
   plugins: [],
+})
+
+/**
+ * Payload's bundled Persian (fa) pack ships the Lexical heading-dropdown label
+ * as the untranslated placeholder "[SKIPPED]" (H1–H6 all render as "[SKIPPED]").
+ * The editor's feature translations are deep-merged over user translations during
+ * config sanitization, so an `i18n.translations` override would be clobbered.
+ * Instead we patch the sanitized config after it resolves — this is the last
+ * write, so it wins at runtime.
+ */
+export default config.then((sanitized) => {
+  const fa = sanitized.i18n?.translations?.fa as Record<string, unknown> | undefined
+  if (fa) {
+    const lexical = (fa.lexical ??= {}) as Record<string, unknown>
+    const heading = (lexical.heading ??= {}) as Record<string, unknown>
+    heading.label = 'عنوان {{headingLevel}}'
+  }
+  return sanitized
 })

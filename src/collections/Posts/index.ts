@@ -56,6 +56,30 @@ export const Posts: CollectionConfig = {
       type: 'richText',
       label: 'متن',
       required: true,
+      // Start new documents in RTL so the caret, empty lines and undetected
+      // blocks default to the right. Lexical still auto-flips individual blocks
+      // to LTR when their content is left-to-right (e.g. English, code).
+      defaultValue: {
+        root: {
+          type: 'root',
+          format: '',
+          indent: 0,
+          version: 1,
+          direction: 'rtl',
+          children: [
+            {
+              type: 'paragraph',
+              format: '',
+              indent: 0,
+              version: 1,
+              direction: 'rtl',
+              textFormat: 0,
+              textStyle: '',
+              children: [],
+            },
+          ],
+        },
+      },
     },
     {
       name: 'coverImage',

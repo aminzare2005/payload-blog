@@ -330,24 +330,15 @@
       line-height: 1.85;
       color: var(--theme-text);
 
+      /* Base direction is RTL: the caret, empty lines and any block whose
+         direction Lexical hasn't resolved default to the right. We intentionally
+         do NOT force text-align on the block themes — Lexical adds its own
+         __ltr / __rtl classes per block from the content, so Persian aligns
+         right and English / code lines align left on their own (proper bidi). */
       .ContentEditable__root {
         direction: rtl;
         font-family: var(--font-body);
         line-height: 1.85;
-        text-align: right;
-      }
-
-      .LexicalEditorTheme__paragraph,
-      .LexicalEditorTheme__quote,
-      .LexicalEditorTheme__h1,
-      .LexicalEditorTheme__h2,
-      .LexicalEditorTheme__h3,
-      .LexicalEditorTheme__h4,
-      .LexicalEditorTheme__h5,
-      .LexicalEditorTheme__h6,
-      .LexicalEditorTheme__ltr {
-        direction: rtl;
-        font-family: var(--font-body);
         text-align: right;
       }
 
@@ -356,11 +347,13 @@
         font-family: var(--font-body);
         text-align: right;
       }
+    }
 
-      [dir='auto'] {
-        direction: rtl;
-        unicode-bidi: plaintext;
-      }
+    /* Directional toolbar icons (increase/decrease indent) point the LTR way by
+       default; mirror them so they read correctly in an RTL editor. */
+    .toolbar-popup__button-indentIncrease svg,
+    .toolbar-popup__button-indentDecrease svg {
+      transform: scaleX(-1);
     }
 
     &--show-gutter > .rich-text-lexical__wrap > .editor-container {
