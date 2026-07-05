@@ -10,7 +10,7 @@ type RichTextContentProps = {
 
 export function RichTextContent({ className, content }: RichTextContentProps) {
   return (
-    <div dir="auto" className={cn('blog-prose max-w-none', className)}>
+    <div className={cn('blog-prose max-w-none', className)}>
       <RichText data={content} />
     </div>
   )

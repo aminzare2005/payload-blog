@@ -14,7 +14,7 @@ export default function NotFound() {
         className="blog-link mt-8 inline-flex text-sm font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d97706]"
         href="/"
       >
-        بازگشت به وبلاگ
+        بازگشت صفحه اصلی
       </Link>
     </BlogContainer>
   )

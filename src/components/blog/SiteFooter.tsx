@@ -7,29 +7,17 @@ const footerColumns = [
   {
     title: 'منابع',
     links: [
-      { href: '/', label: 'مطالب' },
+      { href: '/', label: 'صفحه اصلی' },
       { href: '/admin', label: 'پنل مدیریت', external: true },
+      { href: 'https://github.com/aminzare2005/payload-blog', label: 'گیتهاب', external: true },
     ],
   },
   {
     title: 'بیشتر',
     links: [
-      { href: 'https://payloadcms.com/docs', label: 'مستندات Payload', external: true },
-      { href: 'https://github.com/payloadcms/payload', label: 'گیت‌هاب', external: true },
-    ],
-  },
-  {
-    title: 'منابع 2',
-    links: [
-      { href: '/', label: 'مطالب' },
-      { href: '/admin', label: 'پنل مدیریت', external: true },
-    ],
-  },
-  {
-    title: 'بیشتر 2',
-    links: [
-      { href: 'https://payloadcms.com/docs', label: 'مستندات Payload', external: true },
-      { href: 'https://github.com/payloadcms/payload', label: 'گیت‌هاب', external: true },
+      { href: 'https://payloadcms.com/docs', label: 'پیلود چیه؟', external: true },
+      { href: 'https://aminzare.me', label: 'پورتفولیو من', external: true },
+      // { href: 'https://x.com/cwpslxck', label: 'توییتر من', external: true },
     ],
   },
 ]
@@ -38,7 +26,7 @@ export function SiteFooter() {
   return (
     <footer className="mt-auto border-t border-border bg-warm-surface/60">
       <BlogContainer className="px-4 py-9 md:px-4">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-12 justify-center items-center">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-12 justify-center items-start">
           <div className="col-span-full flex flex-col gap-4 sm:col-span-1">
             <Link className="flex w-fit gap-2 justify-center items-center" href="/">
               <NextMark className="size-4 text-[#b45309]" />
@@ -74,9 +62,14 @@ export function SiteFooter() {
           dir="ltr"
           className="mt-12 flex flex-col gap-4 justify-center items-center border-t border-border pt-8"
         >
-          <p className="text-sm text-muted-foreground">
+          <Link
+            href="https://aminzare.me"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-muted-foreground"
+          >
             © {new Date().getFullYear()} {siteConfig.nameEn} by {siteConfig.authorEn}
-          </p>
+          </Link>
         </div>
       </BlogContainer>
     </footer>

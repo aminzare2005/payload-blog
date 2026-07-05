@@ -5,5 +5,7 @@ export function formatBlogDate(date: string | Date) {
     day: 'numeric',
     month: 'long',
     year: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
   }).format(value)
 }

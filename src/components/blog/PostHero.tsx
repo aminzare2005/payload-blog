@@ -37,14 +37,14 @@ export function PostHero({ post }: PostHeroProps) {
   const cover = getCoverImage(post)
 
   return (
-    <header className="mb-12">
+    <header className="mb-6">
       <Link
-        className="mb-16 inline-flex w-fit items-center gap-2 rounded-sm text-sm text-muted-foreground transition-colors hover:text-[#b45309] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d97706]"
+        className="mb-6 inline-flex w-fit items-center gap-2 rounded-sm text-sm text-muted-foreground transition-colors hover:text-[#b45309] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d97706]"
         draggable={false}
         href="/"
       >
         <BackArrowIcon />
-        بازگشت به وبلاگ
+        بازگشت صفحه اصلی
       </Link>
 
       {post.publishedAt && (
