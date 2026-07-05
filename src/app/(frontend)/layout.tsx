@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import React from 'react'
 
 import { SiteFooter } from '@/components/blog/SiteFooter'
@@ -7,11 +8,34 @@ import { siteConfig } from '@/config/site'
 import '../globals.css'
 import { myFont } from '@/lib/fonts'
 
-export const metadata = {
+export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
   description: siteConfig.description,
   title: {
     default: siteConfig.name,
     template: `%s | ${siteConfig.name}`,
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'fa_IR',
+    url: '/',
+    siteName: siteConfig.name,
+    title: siteConfig.name,
+    description: siteConfig.description,
+    images: [
+      {
+        url: siteConfig.ogImage,
+        width: 2880,
+        height: 1620,
+        alt: siteConfig.name,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: siteConfig.name,
+    description: siteConfig.description,
+    images: [siteConfig.ogImage],
   },
 }
 
