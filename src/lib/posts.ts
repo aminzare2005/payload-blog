@@ -15,7 +15,7 @@ export async function getPublishedPosts() {
     collection: 'posts',
     where: publishedWhere(),
     sort: '-publishedAt',
-    depth: 1,
+    depth: 2,
   })
 }
 
@@ -28,7 +28,7 @@ export async function getPublishedPostBySlug(slug: string) {
       and: [{ slug: { equals: slug } }, publishedWhere()],
     },
     limit: 1,
-    depth: 1,
+    depth: 2,
   })
 
   return result.docs[0] ?? null
