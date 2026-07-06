@@ -128,6 +128,10 @@ export interface UserAuthOperations {
 export interface User {
   id: number;
   name: string;
+  /**
+   * تصویر پروفایل نویسنده در وبلاگ
+   */
+  avatar?: (number | null) | Media;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -199,6 +203,10 @@ export interface Post {
     [k: string]: unknown;
   };
   coverImage?: (number | null) | Media;
+  /**
+   * نویسنده‌ای که در وبلاگ نمایش داده می‌شود
+   */
+  author?: (number | null) | User;
   /**
    * برای پیش‌نویس خالی بگذارید. با تعیین تاریخ، مطلب منتشر می‌شود.
    */
@@ -291,6 +299,7 @@ export interface PayloadMigration {
  */
 export interface UsersSelect<T extends boolean = true> {
   name?: T;
+  avatar?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
@@ -337,6 +346,7 @@ export interface PostsSelect<T extends boolean = true> {
   excerpt?: T;
   content?: T;
   coverImage?: T;
+  author?: T;
   publishedAt?: T;
   updatedAt?: T;
   createdAt?: T;

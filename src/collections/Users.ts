@@ -22,5 +22,14 @@ export const Users: CollectionConfig = {
       label: 'نام',
       required: true,
     },
+    {
+      name: 'avatar',
+      type: 'upload',
+      relationTo: 'media',
+      label: 'آواتار',
+      admin: {
+        description: 'تصویر پروفایل نویسنده در وبلاگ',
+      },
+    },
   ],
 }

@@ -11,7 +11,7 @@ export const Posts: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'title',
-    defaultColumns: ['title', 'publishedAt', 'updatedAt'],
+    defaultColumns: ['title', 'author', 'publishedAt', 'updatedAt'],
     group: 'محتوا',
     description: 'مطالب وبلاگ',
     listSearchableFields: ['title', 'slug', 'excerpt'],
@@ -86,6 +86,16 @@ export const Posts: CollectionConfig = {
       type: 'upload',
       relationTo: 'media',
       label: 'تصویر کاور',
+    },
+    {
+      name: 'author',
+      type: 'relationship',
+      relationTo: 'users',
+      label: 'نویسنده',
+      admin: {
+        position: 'sidebar',
+        description: 'نویسنده‌ای که در وبلاگ نمایش داده می‌شود',
+      },
     },
     {
       name: 'publishedAt',
