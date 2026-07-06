@@ -1,6 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { AuthorAvatar } from '@/components/blog/AuthorAvatar'
+import { getPostAuthor } from '@/lib/authors'
 import { formatBlogDate } from '@/lib/format'
 import type { Media, Post } from '@/payload-types'
 
@@ -18,6 +20,7 @@ function getCoverImage(post: Post): Media | null {
 
 export function PostListItem({ post }: PostListItemProps) {
   const cover = getCoverImage(post)
+  const author = getPostAuthor(post)
 
   return (
     <Link
@@ -39,14 +42,20 @@ export function PostListItem({ post }: PostListItemProps) {
       )}
 
       <div className="flex flex-1 flex-col py-3">
-        {post.publishedAt && (
-          <time
-            className="mb-3 block text-sm leading-5 text-muted-foreground"
-            dateTime={post.publishedAt}
-          >
-            {formatBlogDate(post.publishedAt)}
-          </time>
-        )}
+        <div className="mb-3 flex items-start justify-between gap-3">
+          <div className="min-w-0 flex-1">
+            {post.publishedAt && (
+              <time
+                className="block text-sm leading-5 text-muted-foreground"
+                dateTime={post.publishedAt}
+              >
+                {formatBlogDate(post.publishedAt)}
+              </time>
+            )}
+          </div>
+
+          {author && <AuthorAvatar user={author} />}
+        </div>
 
         <h2 className="text-xl mb-3 font-semibold leading-7 tracking-tight text-foreground transition-colors group-hover:text-[#b45309]">
           {post.title}
