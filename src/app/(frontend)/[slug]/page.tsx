@@ -52,8 +52,8 @@ export default async function PostPage({ params }: PageProps) {
   }
 
   return (
-    <BlogContainer className="py-10" variant="article">
-      <article>
+    <BlogContainer className="py-8 md:py-12" variant="article">
+      <article className="flex flex-col">
         <PostHero post={post} />
         {post.content && <RichTextContent content={post.content} />}
       </article>
