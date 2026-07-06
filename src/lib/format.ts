@@ -4,8 +4,7 @@ export function formatBlogDate(date: string | Date) {
   return new Intl.DateTimeFormat('fa-IR', {
     day: 'numeric',
     month: 'long',
-    year: 'numeric',
+    weekday: 'long',
     hour: 'numeric',
-    minute: 'numeric',
   }).format(value)
 }
