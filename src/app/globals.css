@@ -78,6 +78,7 @@
       radial-gradient(ellipse 80% 50% at 50% -20%, rgba(232, 213, 196, 0.45), transparent),
       linear-gradient(180deg, #fbf7f2 0%, #f5ede6 100%);
     background-attachment: fixed;
+    user-select: none;
   }
 
   ::selection {
@@ -127,6 +128,7 @@
     font-size: 16px;
     line-height: 1.75;
     letter-spacing: -0.01em;
+    user-select: text;
   }
 
   .blog-prose p {
